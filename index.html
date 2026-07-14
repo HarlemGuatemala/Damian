@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HARLEM</title>
+    <link rel="stylesheet" href="style.css"> </head>
+<body>
+
+    <header>
+        <h1>¡Bienvenido a Nuestro Sistema Informativo<br>PÁGINA DE PRUEBA</h1>
+        <img src="Foto/Harlem.png" alt="Foto del Logotipo de Harlem">
+    </header>
+
+    <main>
+        <section1>
+            <h1>VISIÓN</h1>
+            <p><h3>&emsp;&emsp;Ser el referente líder en soluciones integrales de soporte técnico y gestión digital, reconocidos no solo por nuestra excelencia técnica, sino por transformar la frustración de nuestros clientes en tranquilidad. Nos proyectamos como el aliado de confianza de la comunidad, donde cada trámite, diseño o reparación se realiza con absoluta honestidad, garantizando una orientación transparente que empodere y proteja a quienes depositan su confianza en nosotros.</h3></p>
+        </section1>
+        <section2>
+            <h1>OBJETIVO</h1>
+            <p><h3>&emsp;&emsp;Constituirnos como un centro de apoyo integral y soluciones múltiples cuyo propósito central sea facilitar la vida de las personas en sus necesidades tecnológicas, administrativas y de diseño, priorizando siempre el bienestar del cliente a través de una orientación personalizada, honesta y accesible que transforme la frustración digital en tranquilidad, y consolidando un modelo de negocio humano donde la ayuda genuina y la transparencia sean los pilares para construir relaciones de confianza a largo plazo con la comunidad.</h3></p>
+        </section2>
+        <br><br>
+        <section3>
+            <h1>¿QUIÉNES SOMOS?</h1>
+            <p><h3>&emsp;&emsp;Somos un centro de asesoría digital y soporte técnico fundado en 2010 con la misión de simplificar la tecnología para las personas. Nacimos bajo el nombre de "Sophia", destacando por nuestra versatilidad en el entorno laboral, y en 2014 evolucionamos para convertirnos en Harlem, impulsando nuestra productividad y desarrollo hasta consolidarnos en lo que somos hoy. Desde nuestros inicios, funcionamos como un pilar de apoyo y orientación especializado para todas aquellas personas que enfrentan dificultades al realizar sus gestiones y trámites en línea, transformando la complejidad digital en soluciones accesibles y confiables para nuestra comunidad.</h3></p>
+        </section3>
+        <div class="columnas-contenedor">
+    <div class="columna">
+        <h3>Servicios Técnicos</h3>
+        <p>Nuestro sistema te permite acceder a soporte técnico especializado y soluciones integrales para tus necesidades tecnológicas.</p>
+<a href="Reparación.html" class="boton-enlace">Ver Servicios</a> <!--Para cambiar al cuadro de espera es: id="btn-ver-servicios" y quitar el HTML-->
+    </div>
+    <div class="columna">
+        <h3>Gestión Digital</h3>
+        <p>Nuestra plataforma ofrece herramientas avanzadas para la gestión eficiente de tus procesos digitales de diferentes instituciones.</p>
+<a href="#" class="boton-de-enlace" id="btn-ver-servicios.">Ver Servicios</a>
+    </div>
+</div>   
+    </main>
+    <footer>
+        <p>&copy; 2026 - Todos los derechos reservados.</p>
+         <p>Creado por: Damian R.</p>
+    </footer>
+<script src="script.js">
+    
+</script>
+<!-- Cuadro flotante de aviso en construcción -->
+<div id="modal-aviso" class="modal-fondo-aviso">
+    <div class="modal-tarjeta-aviso">
+        <button id="btn-cerrar-aviso" class="modal-cerrar-aviso">&times;</button>
+        
+        <div class="icono-construccion">🚧</div>
+        <h3>Sección en Proceso</h3>
+        <p>Estamos trabajando arduamente en esta sección para ofrecerte la mejor experiencia.</p>
+        <p class="subtexto-aviso">¡Próximamente disponible!</p>
+        
+        <button id="btn-entendido" class="boton-enviar-aviso">Entendido</button>
+    </div>
+</div>
+</body>
+
+</html>
+<script>
+    // Seleccionamos los elementos usando las nuevas clases independientes
+    const modalAviso = document.getElementById('modal-aviso');
+    const btnVerServicios = document.getElementById('btn-ver-servicios');
+    const btnCerrarAviso = document.getElementById('btn-cerrar-aviso');
+    const btnEntendido = document.getElementById('btn-entendido');
+
+    // 1. Mostrar el cuadro al dar clic en el botón
+    btnVerServicios.addEventListener('click', function(e) {
+        e.preventDefault();
+        modalAviso.classList.add('mostrar-aviso');
+    });
+
+    // 2. Ocultar al dar clic en la X
+    btnCerrarAviso.addEventListener('click', function() {
+        modalAviso.classList.remove('mostrar-aviso');
+    });
+
+    // 3. Ocultar al dar clic en "Entendido"
+    btnEntendido.addEventListener('click', function() {
+        modalAviso.classList.remove('mostrar-aviso');
+    });
+
+    // 4. Ocultar si hacen clic afuera en la zona oscura
+    modalAviso.addEventListener('click', function(e) {
+        if (e.target === modalAviso) {
+            modalAviso.classList.remove('mostrar-aviso');
+        }
+    });
+</script>
+<script>
+    // Seleccionamos los elementos usando las nuevas clases independientes
+    const modalaviso = document.getElementById('modal-aviso');
+    const btnVerservicios = document.getElementById('btn-ver-servicios.');
+    const btncerrarAviso = document.getElementById('btn-cerrar-aviso');
+    const btnentendido = document.getElementById('btn-entendido');
+
+    // 1. Mostrar el cuadro al dar clic en el botón
+    btnVerservicios.addEventListener('click', function(e) {
+        e.preventDefault();
+        modalAviso.classList.add('mostrar-aviso');
+    });
+
+    // 2. Ocultar al dar clic en la X
+    btncerrarAviso.addEventListener('click', function() {
+        modalAviso.classList.remove('mostrar-aviso');
+    });
+
+    // 3. Ocultar al dar clic en "Entendido"
+    btnentendido.addEventListener('click', function() {
+        modalAviso.classList.remove('mostrar-aviso');
+    });
+
+    // 4. Ocultar si hacen clic afuera en la zona oscura
+    modalaviso.addEventListener('click', function(e) {
+        if (e.target === modalAviso) {
+            modalAviso.classList.remove('mostrar-aviso');
+        }
+    });
+</script>
