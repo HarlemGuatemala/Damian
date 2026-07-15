@@ -140,71 +140,72 @@
     <script src="script.js"></script>
 
     <!-- Script Inteligente: Optimiza imágenes pesadas antes de enviar -->
+    <!-- Script Inteligente Corregido: Optimiza imágenes y envía de forma nativa -->
     <script>
         const formularios = document.querySelectorAll('.formulario-tramite');
 
         formularios.forEach(form => {
             form.addEventListener('submit', async function(e) {
-                e.preventDefault(); // Detiene el envío normal para procesar primero
+                // Si el formulario ya fue procesado y está listo, dejamos que se envíe normalmente
+                if (form.dataset.listo === "true") {
+                    return; 
+                }
+
+                e.preventDefault(); // Detenemos el envío inicial para poder comprimir las fotos
 
                 const submitBtn = form.querySelector('button[type="submit"]');
                 const originalBtnText = submitBtn.innerText;
 
-                // Desactivamos el botón para que el usuario no dé clic dos veces
+                // Desactivamos el botón para evitar clics dobles
                 submitBtn.disabled = true;
                 submitBtn.innerText = "Procesando...";
 
-                const formDataOriginal = new FormData(form);
-                const formDataOptimizado = new FormData();
-
-                // Configuración para que las fotos queden ligeras pero conserven total nitidez para leer DPIs/Recibos
+                // Configuración para que las fotos queden ligeras pero súper nítidas (Full HD)
                 const opcionesCompresion = {
-                    maxSizeMB: 0.9,          // Baja el peso a menos de 1 MB
-                    maxWidthOrHeight: 1920, // Resolución nítida Full HD
+                    maxSizeMB: 0.9,          // Baja el peso a menos de 1 MB por foto
+                    maxWidthOrHeight: 1920, // Mantiene la resolución para leer textos con claridad
                     useWebWorker: true      
                 };
 
                 try {
-                    for (let [key, value] of formDataOriginal.entries()) {
-                        
-                        // Si es una foto real y pesa algo, se optimiza
-                        if (value instanceof File && value.type.startsWith('image/') && value.size > 0) {
-                            submitBtn.innerText = `Optimizando imagen...`;
-                            
-                            try {
-                                const archivoComprimido = await imageCompression(value, opcionesCompresion);
-                                const archivoListo = new File([archivoComprimido], value.name, { type: archivoComprimido.type });
-                                formDataOptimizado.append(key, archivoListo);
-                            } catch (errCompression) {
-                                console.error("Error al comprimir, enviando original:", errCompression);
-                                formDataOptimizado.append(key, value); // Si falla por algo, envía la original
+                    // Buscamos todos los campos de tipo archivo dentro de este formulario
+                    const camposArchivo = form.querySelectorAll('input[type="file"]');
+                    
+                    for (let campo of camposArchivo) {
+                        if (campo.files.length > 0) {
+                            const archivoOriginal = campo.files[0];
+
+                            // Solo optimizamos si es una imagen (DPI, recibos, etc.)
+                            if (archivoOriginal.type.startsWith('image/')) {
+                                submitBtn.innerText = `Optimizando imágenes...`;
+                                
+                                try {
+                                    const archivoComprimido = await imageCompression(archivoOriginal, opcionesCompresion);
+                                    
+                                    // Creamos el nuevo archivo optimizado manteniendo el nombre original
+                                    const archivoListo = new File([archivoComprimido], archivoOriginal.name, { type: archivoComprimido.type });
+
+                                    // Pasamos el archivo optimizado directamente al campo del formulario del cliente
+                                    const dataTransfer = new DataTransfer();
+                                    dataTransfer.items.add(archivoListo);
+                                    campo.files = dataTransfer.files;
+
+                                } catch (errCompression) {
+                                    console.error("Error comprimiendo este archivo, se enviará el original:", errCompression);
+                                }
                             }
-                        } else {
-                            // Los campos de texto, números y PDFs se pasan directo sin modificar
-                            formDataOptimizado.append(key, value);
                         }
                     }
 
                     submitBtn.innerText = "Enviando trámite...";
 
-                    // Enviamos los datos procesados en segundo plano
-                    const response = await fetch(form.action, {
-                        method: 'POST',
-                        body: formDataOptimizado
-                    });
-
-                    if (response.ok) {
-                        alert("✅ ¡Trámite enviado con éxito!\n\nHemos recibido tus datos y documentos de forma correcta.");
-                        form.reset(); // Limpia los campos al finalizar con éxito
-                    } else {
-                        alert("❌ Error al enviar el trámite. Por favor, inténtalo de nuevo.");
-                    }
+                    // Marcamos el formulario como listo y lo enviamos de forma nativa para que Web3Forms lo acepte
+                    form.dataset.listo = "true";
+                    form.submit();
 
                 } catch (error) {
-                    console.error("Error en el envío:", error);
+                    console.error("Error en el proceso:", error);
                     alert("Ocurrió un inconveniente al procesar tus datos.");
-                } finally {
-                    // Restauramos el botón a su estado normal
                     submitBtn.disabled = false;
                     submitBtn.innerText = originalBtnText;
                 }
