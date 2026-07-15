@@ -1,109 +1,203 @@
-/* 1. SECCIÓN DE BODY REESTRUCTURADA Y CORREGIDA */
-body {
-    font-family: poppins;
-    text-align: center;
-    background-color: white;
-    color: #000000;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Cambiado a 100vh para evitar espacio en blanco infinito */
-    
-    /* Configuración de fondo óptima para evitar saltos en celular */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('Digital/Fotos/Harlem.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    
-    /* REMOVIDO: background-attachment: fixed (causa saltos en teléfonos) */
-}
-
-/* Reset básico universal */
+/* RESET GENERAL Y FUENTE */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* Contenedor principal para Computadoras */
+/* FONDO CON TU IMAGEN ORIGINAL */
+body {
+    /* Usamos la imagen original de tu local "Harlem.png" con un filtro oscuro para legibilidad */
+    background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('Harlem.png') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* CONTENEDOR DE LAS 3 TARJETAS EN FILA */
 .contenedor-principal {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;  
-    gap: 25px;                     
-    padding: 35px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
     width: 100%;
-    max-width: 1200px; /* Evita que en pantallas gigantes se deforme */
-    margin: 0 auto;    /* Centra el contenedor azul en computadoras */
+    margin: 0 auto;
+    padding: 40px 20px;
+    flex-grow: 1; /* Permite que empuje al footer hacia abajo */
 }
 
-.columna-izquierda, .columna-derecha {
-    background-color: #bff6fde3;
-    padding: 20px;
-    border-radius: 8px;
+/* TARJETAS MODERNAS (Efecto Cristal Esmerilado) */
+.tarjeta-servicio {
+    background: rgba(255, 255, 255, 0.08); /* Blanco muy translúcido */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 30px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribuye títulos, listas, fotos y botones uniformemente */
+    color: #ffffff;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-/* Control general de imágenes */
-img {
-    max-width: 100%; /* Cambiado a 100% para que responda bien a sus contenedores */
-    height: auto;
-    border-radius: 8px;
-    cursor: pointer;
+/* Efecto hover en las tarjetas */
+.tarjeta-servicio:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(243, 190, 18, 0.25); /* Destello amarillo Harlem */
+    border-color: rgba(243, 190, 18, 0.4);
 }
 
-.seccion-abajo {
-    grid-column: 1 / span 2;       
-    justify-self: center;          
-    width: 50%;                    
-    min-width: 300px;              
-    background-color: #bff6fde3;
-    padding: 20px;
-    border-radius: 8px;
-}
-
-/* 2. PIE DE PÁGINA CORREGIDO */
-footer {
-    background-color: #4faaff;
-    background: linear-gradient(to bottom, #4faaff, #cfe6fc, #b3daff);
-    color: rgb(0, 0, 0); /* Cambiado a negro para legibilidad sobre el fondo celeste */
+/* Títulos de las tarjetas (H1) */
+.tarjeta-cabecera h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
     text-align: center;
-    padding: 1.5rem 1rem;
-    border-top: 1px solid #000000;
-    width: 100%;
-    margin-top: auto; /* Empuja el footer siempre al fondo de la página */
+    color: #f3be12; /* Amarillo corporativo Harlem */
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
-/* Estilos de botones internos del footer */
-.texto-abajo {
-    text-align: center;
-    color: rgb(0, 0, 0);
-    margin-bottom: 10px;
+/* Listas de servicios modernas */
+.lista-servicios {
+    list-style: none;
+    margin-bottom: 20px;
 }
 
-.Boton-Enlace, .Boton-whatsapp {
-    display: inline-flex;
+.lista-servicios li {
+    font-size: 0.95rem;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    border-radius: 5px;
+}
+
+/* Puntos amarillos personalizados para las listas */
+.lista-servicios li::before {
+    content: "•";
+    color: #f3be12;
     font-weight: bold;
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+
+/* Contenedor de imágenes */
+.tarjeta-imagen {
+    height: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: auto; /* Empuja la imagen hacia la parte inferior antes del botón */
+}
+
+.tarjeta-imagen img {
+    max-height: 100%;
+    max-width: 90%;
+    object-fit: contain;
+    filter: drop-shadow(2px 4px 8px rgba(0, 0, 0, 0.4));
+}
+
+/* BOTÓN DE WHATSAPP EN CADA TARJETA (Estilo Harlem) */
+.btn-whatsapp-tarjeta {
+    display: block;
+    background-color: #f3be12; /* Amarillo */
+    color: #0e0e0e; /* Texto oscuro para contraste */
     text-decoration: none;
-    cursor: pointer;
-    margin: 5px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    padding: 12px 15px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(243, 190, 18, 0.2);
+}
+
+.btn-whatsapp-tarjeta:hover {
+    background-color: #ffffff;
+    color: #0e0e0e;
+    transform: scale(1.03);
+    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* FOOTER */
+footer {
+    background-color: rgba(14, 14, 14, 0.95);
+    border-top: 2px solid #f3be12;
+    padding: 25px 20px;
+    text-align: center;
+    color: #ffffff;
+    width: 100%;
+}
+
+.texto-abajo {
+    font-size: 0.9rem;
+    color: #cccccc;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.botones-footer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* BOTONES DE ENLACE EN EL FOOTER */
+.Boton-Enlace, .Boton-whatsapp {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
 }
 
 .Boton-Enlace {
-    background-color: #ff853eee;
-    color: white;
-    border: none;
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.Boton-Enlace:hover { background-color: #6e3e10; transform: translateY(-2px); }
-.Boton-whatsapp { background-color: #25D366; color: white; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
-.Boton-whatsapp:hover { background-color: #128C7E; transform: translateY(-2px); }
-.Boton-Enlace:active, .Boton-whatsapp:active { transform: translateY(0); }
+.Boton-Enlace:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #ffffff;
+}
+
+.Boton-whatsapp {
+    background-color: #25D366; /* Verde clásico de WhatsApp */
+    color: #ffffff;
+}
+
+.Boton-whatsapp:hover {
+    background-color: #128C7E;
+    transform: translateY(-2px);
+}
+
+/* DISEÑO ADAPTABLE A MÓVILES (Responsivo) */
+@media (max-width: 768px) {
+    .contenedor-principal {
+        grid-template-columns: 1fr; /* Una sola tarjeta por fila en celulares */
+        padding: 20px;
+    }
+    .botones-footer {
+        flex-direction: column;
+        align-items: center;
+    }
+    .Boton-Enlace, .Boton-whatsapp {
+        width: 100%;
+        max-width: 280px;
+    }
+}
 
 
 /* ========================================================== */
@@ -163,4 +257,23 @@ footer {
         margin: 0 auto !important;
         box-sizing: border-box !important;
     }
+}
+.btn-whatsapp {
+    display: inline-block;
+    background-color: #f3be12; /* El color amarillo característico de tu logo (ajústalo si tienes el código exacto) */
+    color: #1a1a1a;            /* Texto oscuro para que tenga excelente contraste y legibilidad */
+    text-decoration: none;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 25px;       /* Bordes redondeados modernos */
+    margin-top: 15px;
+    transition: all 0.3s ease; /* Transición suave para el efecto hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Efecto al pasar el cursor (hover) */
+.btn-whatsapp:hover {
+    background-color: #d6a40a; /* Un amarillo un poco más oscuro al pasar el mouse */
+    transform: translateY(-2px); /* Pequeño salto hacia arriba */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
 }
