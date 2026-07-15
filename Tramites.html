@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HARLEM - Gestiones y Trámites</title>
+    <!-- Mantenemos tu misma versión del CSS para evitar caché -->
     <link rel="stylesheet" href="style.css?v=2"> 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- IMPORTANTE: Cargamos la librería que comprimirá las imágenes en el celular/PC del cliente -->
+    <script src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js"></script>
 </head>
 <body>
 
@@ -20,7 +24,9 @@
         
         <div class="columnas-contenedor-tramites">
 
+            <!-- TRÁMITE 1: PRIMER NIT -->
             <form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" class="glass-card formulario-tramite">
+                <!-- Tu clave de Web3Forms actual ya configurada -->
                 <input type="hidden" name="access_key" value="ebcac1e5-6574-4daa-bb55-202c4595abbb">
                 <input type="hidden" name="subject" value="Nuevo Trámite: Primer NIT - Harlem">
                 
@@ -49,6 +55,7 @@
                 <button type="submit" class="boton-enlace">Enviar Trámite</button>
             </form>
 
+            <!-- TRÁMITE 2: ACTUALIZACIÓN DE DATOS -->
             <form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" class="glass-card formulario-tramite">
                 <input type="hidden" name="access_key" value="ebcac1e5-6574-4daa-bb55-202c4595abbb">
                 <input type="hidden" name="subject" value="Nuevo Trámite: Actualización de Datos - Harlem">
@@ -83,6 +90,7 @@
                 <button type="submit" class="boton-enlace btn-amarillo">Enviar Trámite</button>
             </form>
 
+            <!-- TRÁMITE 3: RENAS -->
             <form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" class="glass-card formulario-tramite">
                 <input type="hidden" name="access_key" value="ebcac1e5-6574-4daa-bb55-202c4595abbb">
                 <input type="hidden" name="subject" value="Nuevo Trámite: RENAS - Harlem">
@@ -127,6 +135,81 @@
         <br>
         <a href="index.html" class="boton-volver">Volver a la Página Principal</a>
     </footer>
+
+    <!-- Efecto de scroll del encabezado -->
     <script src="script.js"></script>
+
+    <!-- Script Inteligente: Optimiza imágenes pesadas antes de enviar -->
+    <script>
+        const formularios = document.querySelectorAll('.formulario-tramite');
+
+        formularios.forEach(form => {
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault(); // Detiene el envío normal para procesar primero
+
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.innerText;
+
+                // Desactivamos el botón para que el usuario no dé clic dos veces
+                submitBtn.disabled = true;
+                submitBtn.innerText = "Procesando...";
+
+                const formDataOriginal = new FormData(form);
+                const formDataOptimizado = new FormData();
+
+                // Configuración para que las fotos queden ligeras pero conserven total nitidez para leer DPIs/Recibos
+                const opcionesCompresion = {
+                    maxSizeMB: 0.9,          // Baja el peso a menos de 1 MB
+                    maxWidthOrHeight: 1920, // Resolución nítida Full HD
+                    useWebWorker: true      
+                };
+
+                try {
+                    for (let [key, value] of formDataOriginal.entries()) {
+                        
+                        // Si es una foto real y pesa algo, se optimiza
+                        if (value instanceof File && value.type.startsWith('image/') && value.size > 0) {
+                            submitBtn.innerText = `Optimizando imagen...`;
+                            
+                            try {
+                                const archivoComprimido = await imageCompression(value, opcionesCompresion);
+                                const archivoListo = new File([archivoComprimido], value.name, { type: archivoComprimido.type });
+                                formDataOptimizado.append(key, archivoListo);
+                            } catch (errCompression) {
+                                console.error("Error al comprimir, enviando original:", errCompression);
+                                formDataOptimizado.append(key, value); // Si falla por algo, envía la original
+                            }
+                        } else {
+                            // Los campos de texto, números y PDFs se pasan directo sin modificar
+                            formDataOptimizado.append(key, value);
+                        }
+                    }
+
+                    submitBtn.innerText = "Enviando trámite...";
+
+                    // Enviamos los datos procesados en segundo plano
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: formDataOptimizado
+                    });
+
+                    if (response.ok) {
+                        alert("✅ ¡Trámite enviado con éxito!\n\nHemos recibido tus datos y documentos de forma correcta.");
+                        form.reset(); // Limpia los campos al finalizar con éxito
+                    } else {
+                        alert("❌ Error al enviar el trámite. Por favor, inténtalo de nuevo.");
+                    }
+
+                } catch (error) {
+                    console.error("Error en el envío:", error);
+                    alert("Ocurrió un inconveniente al procesar tus datos.");
+                } finally {
+                    // Restauramos el botón a su estado normal
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = originalBtnText;
+                }
+            });
+        });
+    </script>
 </body>
 </html>
