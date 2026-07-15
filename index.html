@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HARLEM - Reparaciones y Gestiones En Línea</title>
-    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="style.css?v=1"> 
     <meta name="google-site-verification" content="tWrcgWAXc-8GYyjH_4YVJLvtgHKZuHUfJg2RLhWIpMQ" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
@@ -38,13 +38,13 @@
             <div class="columna glass-card">
                 <h3>Servicios Técnicos</h3>
                 <p>Nuestro sistema te permite acceder a soporte técnico especializado y soluciones integrales para tus necesidades tecnológicas.</p>
-                <a href="Reparación.html" class="boton-enlace">Ver Servicios</a>
+                <a href="Reparación.html" class="boton-enlace">Ver Servicios</a> 
             </div>
-            
+           
             <div class="columna glass-card">
                 <h3>Gestión Digital</h3>
                 <p>Nuestra plataforma ofrece herramientas avanzadas para la gestión eficiente de tus procesos digitales de diferentes instituciones.</p>
-                <a href="#" class="boton-enlace btn-amarillo" id="btn-ver-servicios.">Ver Servicios</a>
+                <a href="Tramites.html" class="boton-enlace btn-amarillo">Ver Servicios</a>
             </div>
         </div>   
 
@@ -93,7 +93,8 @@
         // Ocultar si hacen clic afuera de la tarjeta
         modalAviso.addEventListener('click', function(e) {
             if (e.target === modalAviso) {
-                modalAviso.classList.remove('mostrar-aviso');
+                modalAviso.classList.remove('mostrar-aviso'); 
+                
             }
         });
     </script>

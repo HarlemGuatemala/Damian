@@ -357,3 +357,119 @@ header {
     pointer-events: none; /* Evita que el menú invisible bloquee clics en el resto de la página */
     transform: translateY(-10px); /* Un ligero efecto de desplazamiento hacia arriba al desaparecer */
 }
+/* ==========================================
+   ESTILOS EXCLUSIVOS PARA LA PÁGINA DE TRÁMITES
+   ========================================== */
+
+/* Contenedor que agrupa los 3 formularios */
+.columnas-contenedor-tramites {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Estilo para los formularios tipo Tarjeta de Cristal */
+.formulario-tramite {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+}
+
+.formulario-tramite h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #f3be12; /* Amarillo corporativo */
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 2px solid rgba(243, 190, 18, 0.3);
+    padding-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+/* Espaciado para cada campo del formulario */
+.grupo-campo {
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.grupo-campo label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #cbd5e1;
+}
+
+/* Estilos de los Inputs de texto y números */
+.grupo-campo input[type="text"],
+.grupo-campo input[type="tel"] {
+    width: 100%;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 0.9rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.grupo-campo input[type="text"]:focus,
+.grupo-campo input[type="tel"]:focus {
+    border-color: #f3be12;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 10px rgba(243, 190, 18, 0.2);
+}
+
+/* Estilos del Input de archivos (Subir foto) */
+.grupo-campo input[type="file"] {
+    width: 100%;
+    color: #cbd5e1;
+    font-size: 0.85rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px dashed rgba(255, 255, 255, 0.3);
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.grupo-campo input[type="file"]:hover {
+    border-color: #f3be12;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Botones de envío dentro del formulario */
+.formulario-tramite .boton-enlace {
+    width: 100%;
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* Botón de volver en el footer */
+.boton-volver {
+    display: inline-block;
+    margin-top: 15px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    padding-bottom: 2px;
+    transition: all 0.3s ease;
+}
+
+.boton-volver:hover {
+    color: #f3be12;
+    border-color: #f3be12;
+}
+
+/* Ajuste responsive para celulares */
+@media (max-width: 768px) {
+    .columnas-contenedor-tramites {
+        grid-template-columns: 1fr;
+    }
+}

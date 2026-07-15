@@ -7,7 +7,7 @@ window.addEventListener('scroll', () => {
     
     // Si el usuario bajó más de 200px, le añadimos la clase para ocultarlo.
     // Si vuelve arriba, se la quitamos para que vuelva a aparecer.
-    if (scrollActual > 100) {
+    if (scrollActual > 80) {
         header.classList.add('header-oculto');
     } else {
         header.classList.remove('header-oculto');

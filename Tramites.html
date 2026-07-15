@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HARLEM - Gestiones y Trámites</title>
+    <link rel="stylesheet" href="style.css?v=1"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="header-contenido">
+            <h1>Gestiones y Trámites en Línea</h1>
+            <img src="Foto/Harlem.png" alt="Foto del Logotipo de Harlem" class="logo-harlem">
+        </div>
+    </header>
+
+    <main class="contenedor-principal">
+        
+        <div class="columnas-contenedor-tramites">
+
+            <form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" class="glass-card formulario-tramite">
+                <input type="hidden" name="access_key" value="TU-CLAVE-WEB3FORMS-AQUÍ">
+                <input type="hidden" name="subject" value="Nuevo Trámite: Primer NIT - Harlem">
+                
+                <h2>PRIMER NIT</h2>
+                
+                <div class="grupo-campo">
+                    <label>DPI Vigente (Ambos lados / Documento) *</label>
+                    <input type="file" name="DPI_Primer_NIT" accept="image/*,application/pdf" required>
+                </div>
+
+                <div class="grupo-campo">
+                    <label>Foto de Correo Electrónico y Contraseña *</label>
+                    <input type="file" name="Correo_Contrasena_NIT" accept="image/*" required>
+                </div>
+
+                <div class="grupo-campo">
+                    <label>Número de Teléfono *</label>
+                    <input type="tel" name="Telefono_NIT" placeholder="Ej. 44428618" required>
+                </div>
+
+                <div class="grupo-campo">
+                    <label>Foto de Recibo de Luz *</label>
+                    <input type="file" name="Recibo_Luz_NIT" accept="image/*" required>
+                </div>
+
+                <button type="submit" class="boton-enlace">Enviar Trámite</button>
+            </form>
+
+            <form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" class="glass-card formulario-tramite">
+                <input type="hidden" name="access_key" value="TU-CLAVE-WEB3FORMS-AQUÍ">
+                <input type="hidden" name="subject" value="Nuevo Trámite: Actualización de Datos - Harlem">
+
+                <h2>ACTUALIZACIÓN DE DATOS</h2>
+
+                <div class="grupo-campo">
+                    <label>Foto de Agencia Virtual *</label>
+                    <input type="file" name="Agencia_Virtual" accept="image/*" required>
+                </div>
+                
+                <div class="grupo-campo">
+                    <label>DPI Vigente (Ambos lados / Documento) *</label>
+                    <input type="file" name="DPI_Actualizacion" accept="image/*,application/pdf" required>
+                </div>
+
+                <div class="grupo-campo">
+                    <label>Foto de Correo Electrónico y Contraseña *</label>
+                    <input type="file" name="Correo_Contrasena_Actualizacion" accept="image/*" required>
+                </div>
+
+                <div class="grupo-campo">
+                    <label>Número de Teléfono *</label>
+                    <input type="tel" name="Telefono_Actualizacion" placeholder="Ej. 44428618" required>
+                </div>
+
+                <div class="grupo-campo">
+                    <label>Foto de Recibo de Luz *</label>
+                    <input type="file" name="Recibo_Luz_Actualizacion" accept="image/*" required>
+                </div>
+
+                <button type="submit" class="boton-enlace btn-amarillo">Enviar Trámite</button>
+            </form>
+
+            <form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" class="glass-card formulario-tramite">
+                <input type="hidden" name="access_key" value="TU-CLAVE-WEB3FORMS-AQUÍ">
+                <input type="hidden" name="subject" value="Nuevo Trámite: RENAS - Harlem">
+
+                <h2>RENAS</h2>
+                
+                <div class="grupo-campo">
+                    <label>Foto de DPI (Ambos Lados) *</label>
+                    <input type="file" name="DPI_RENAS" accept="image/*" required>
+                </div>
+
+                <div class="grupo-campo">
+                    <label>Foto de Correo Electrónico *</label>
+                    <input type="file" name="Correo_RENAS" accept="image/*" required>
+                </div>
+
+                <div class="grupo-campo">
+                    <label>Número de Teléfono *</label>
+                    <input type="tel" name="Telefono_RENAS" placeholder="Ej. 44428618" required>
+                </div>
+
+                <div class="grupo-campo">
+                    <label>Nombre de la Empresa donde trabajará *</label>
+                    <input type="text" name="Nombre_Empresa" placeholder="Nombre de la empresa" required>
+                </div>
+
+                <div class="grupo-campo">
+                    <label>Lugar de la Empresa (Ubicación) *</label>
+                    <input type="text" name="Lugar_Empresa" placeholder="Dirección o municipio" required>
+                </div>
+
+                <button type="submit" class="boton-enlace">Enviar Trámite</button>
+            </form>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Todos los derechos reservados.</p>
+        <p class="creador">Creado por: Damian R.</p>
+        <br>
+        <a href="index.html" class="boton-volver">Volver a la Página Principal</a>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

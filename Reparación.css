@@ -16,6 +16,28 @@ body {
     flex-direction: column;
     justify-content: space-between;
 }
+/* ==========================================
+   ENCABEZADO ESTILIZADO
+   ========================================== */
+header {
+    background: linear-gradient(135deg, rgba(250, 124, 5, 0.9), rgba(243, 162, 87, 0.8));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 2px solid #f3be12;
+    padding: 3rem 1.5rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+.logo-harlem {
+    max-width: 150px;
+    height: auto;
+    display: block;
+    margin: 1.5rem auto 0 auto;
+    filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.5));
+}
 
 /* CONTENEDOR DE LAS 3 TARJETAS EN FILA */
 .contenedor-principal {
@@ -197,4 +219,16 @@ footer {
         width: 100%;
         max-width: 280px;
     }
+}
+/* Asegura que el header del HTML 1 tenga configurada la transición */
+header {
+    /* ... tus estilos existentes ... */
+    transition: opacity 0.4s ease, transform 0.4s ease; 
+}
+
+/* Y que exista la clase que JS activa al bajar */
+.header-oculto {
+    opacity: 0;
+    pointer-events: none; 
+    transform: translateY(-10px); 
 }
