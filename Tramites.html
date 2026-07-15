@@ -4,12 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HARLEM - Gestiones y Trámites</title>
-    <!-- Mantenemos tu misma versión del CSS para evitar caché -->
-    <link rel="stylesheet" href="style.css?v=2"> 
+    <link rel="stylesheet" href="style.css?v=15.7"> 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- IMPORTANTE: Cargamos la librería que comprimirá las imágenes en el celular/PC del cliente -->
-    <script src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js"></script>
 </head>
 <body>
 
@@ -21,20 +17,24 @@
     </header>
 
     <main class="contenedor-principal">
-        
         <div class="columnas-contenedor-tramites">
 
             <!-- TRÁMITE 1: PRIMER NIT -->
-            <form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" class="glass-card formulario-tramite">
-                <!-- Tu clave de Web3Forms actual ya configurada -->
-                <input type="hidden" name="access_key" value="ebcac1e5-6574-4daa-bb55-202c4595abbb">
-                <input type="hidden" name="subject" value="Nuevo Trámite: Primer NIT - Harlem">
+            <!-- ⚠️ REEMPLAZA "tu_codigo_secreto" CON EL URL QUE TE DE FORMSPREE -->
+            <form action="https://formspree.io/f/tu_codigo_secreto" method="POST" enctype="multipart/form-data" class="glass-card formulario-tramite">
+                <input type="hidden" name="_subject" value="Nuevo Trámite: Primer NIT - Harlem">
                 
                 <h2>PRIMER NIT</h2>
                 
+                <!-- Separado en Lado Frontal y Reverso -->
                 <div class="grupo-campo">
-                    <label>DPI Vigente (Ambos lados / Documento) *</label>
-                    <input type="file" name="DPI_Primer_NIT" accept="image/*,application/pdf" required>
+                    <label>DPI Vigente (Lado Frontal) *</label>
+                    <input type="file" name="DPI_Primer_NIT_Frente" accept="image/*,application/pdf" required>
+                </div>
+
+                <div class="grupo-campo">
+                    <label>DPI Vigente (Lado Reverso) *</label>
+                    <input type="file" name="DPI_Primer_NIT_Atras" accept="image/*,application/pdf" required>
                 </div>
 
                 <div class="grupo-campo">
@@ -56,9 +56,9 @@
             </form>
 
             <!-- TRÁMITE 2: ACTUALIZACIÓN DE DATOS -->
-            <form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" class="glass-card formulario-tramite">
-                <input type="hidden" name="access_key" value="ebcac1e5-6574-4daa-bb55-202c4595abbb">
-                <input type="hidden" name="subject" value="Nuevo Trámite: Actualización de Datos - Harlem">
+            <!-- ⚠️ REEMPLAZA "tu_codigo_secreto" CON EL URL QUE TE DE FORMSPREE -->
+            <form action="https://formspree.io/f/tu_codigo_secreto" method="POST" enctype="multipart/form-data" class="glass-card formulario-tramite">
+                <input type="hidden" name="_subject" value="Nuevo Trámite: Actualización de Datos - Harlem">
 
                 <h2>ACTUALIZACIÓN DE DATOS</h2>
 
@@ -67,9 +67,15 @@
                     <input type="file" name="Agencia_Virtual" accept="image/*" required>
                 </div>
                 
+                <!-- Separado en Lado Frontal y Reverso -->
                 <div class="grupo-campo">
-                    <label>DPI Vigente (Ambos lados / Documento) *</label>
-                    <input type="file" name="DPI_Actualizacion" accept="image/*,application/pdf" required>
+                    <label>DPI Vigente (Lado Frontal) *</label>
+                    <input type="file" name="DPI_Actualizacion_Frente" accept="image/*,application/pdf" required>
+                </div>
+
+                <div class="grupo-campo">
+                    <label>DPI Vigente (Lado Reverso) *</label>
+                    <input type="file" name="DPI_Actualizacion_Atras" accept="image/*,application/pdf" required>
                 </div>
 
                 <div class="grupo-campo">
@@ -91,15 +97,21 @@
             </form>
 
             <!-- TRÁMITE 3: RENAS -->
-            <form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" class="glass-card formulario-tramite">
-                <input type="hidden" name="access_key" value="ebcac1e5-6574-4daa-bb55-202c4595abbb">
-                <input type="hidden" name="subject" value="Nuevo Trámite: RENAS - Harlem">
+            <!-- ⚠️ REEMPLAZA "tu_codigo_secreto" CON EL URL QUE TE DE FORMSPREE -->
+            <form action="https://formspree.io/f/tu_codigo_secreto" method="POST" enctype="multipart/form-data" class="glass-card formulario-tramite">
+                <input type="hidden" name="_subject" value="Nuevo Trámite: RENAS - Harlem">
 
                 <h2>RENAS</h2>
                 
+                <!-- Separado en Lado Frontal y Reverso -->
                 <div class="grupo-campo">
-                    <label>Foto de DPI (Ambos Lados) *</label>
-                    <input type="file" name="DPI_RENAS" accept="image/*" required>
+                    <label>Foto de DPI (Lado Frontal) *</label>
+                    <input type="file" name="DPI_RENAS_Frente" accept="image/*" required>
+                </div>
+
+                <div class="grupo-campo">
+                    <label>Foto de DPI (Lado Reverso) *</label>
+                    <input type="file" name="DPI_RENAS_Atras" accept="image/*" required>
                 </div>
 
                 <div class="grupo-campo">
@@ -126,7 +138,6 @@
             </form>
 
         </div>
-
     </main>
 
     <footer>
@@ -136,81 +147,6 @@
         <a href="index.html" class="boton-volver">Volver a la Página Principal</a>
     </footer>
 
-    <!-- Efecto de scroll del encabezado -->
     <script src="script.js"></script>
-
-    <!-- Script Inteligente: Optimiza imágenes pesadas antes de enviar -->
-    <!-- Script Inteligente Corregido: Optimiza imágenes y envía de forma nativa -->
-    <script>
-        const formularios = document.querySelectorAll('.formulario-tramite');
-
-        formularios.forEach(form => {
-            form.addEventListener('submit', async function(e) {
-                // Si el formulario ya fue procesado y está listo, dejamos que se envíe normalmente
-                if (form.dataset.listo === "true") {
-                    return; 
-                }
-
-                e.preventDefault(); // Detenemos el envío inicial para poder comprimir las fotos
-
-                const submitBtn = form.querySelector('button[type="submit"]');
-                const originalBtnText = submitBtn.innerText;
-
-                // Desactivamos el botón para evitar clics dobles
-                submitBtn.disabled = true;
-                submitBtn.innerText = "Procesando...";
-
-                // Configuración para que las fotos queden ligeras pero súper nítidas (Full HD)
-                const opcionesCompresion = {
-                    maxSizeMB: 0.9,          // Baja el peso a menos de 1 MB por foto
-                    maxWidthOrHeight: 1920, // Mantiene la resolución para leer textos con claridad
-                    useWebWorker: true      
-                };
-
-                try {
-                    // Buscamos todos los campos de tipo archivo dentro de este formulario
-                    const camposArchivo = form.querySelectorAll('input[type="file"]');
-                    
-                    for (let campo of camposArchivo) {
-                        if (campo.files.length > 0) {
-                            const archivoOriginal = campo.files[0];
-
-                            // Solo optimizamos si es una imagen (DPI, recibos, etc.)
-                            if (archivoOriginal.type.startsWith('image/')) {
-                                submitBtn.innerText = `Optimizando imágenes...`;
-                                
-                                try {
-                                    const archivoComprimido = await imageCompression(archivoOriginal, opcionesCompresion);
-                                    
-                                    // Creamos el nuevo archivo optimizado manteniendo el nombre original
-                                    const archivoListo = new File([archivoComprimido], archivoOriginal.name, { type: archivoComprimido.type });
-
-                                    // Pasamos el archivo optimizado directamente al campo del formulario del cliente
-                                    const dataTransfer = new DataTransfer();
-                                    dataTransfer.items.add(archivoListo);
-                                    campo.files = dataTransfer.files;
-
-                                } catch (errCompression) {
-                                    console.error("Error comprimiendo este archivo, se enviará el original:", errCompression);
-                                }
-                            }
-                        }
-                    }
-
-                    submitBtn.innerText = "Enviando trámite...";
-
-                    // Marcamos el formulario como listo y lo enviamos de forma nativa para que Web3Forms lo acepte
-                    form.dataset.listo = "true";
-                    form.submit();
-
-                } catch (error) {
-                    console.error("Error en el proceso:", error);
-                    alert("Ocurrió un inconveniente al procesar tus datos.");
-                    submitBtn.disabled = false;
-                    submitBtn.innerText = originalBtnText;
-                }
-            });
-        });
-    </script>
 </body>
 </html>
