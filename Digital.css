@@ -1,6 +1,7 @@
 body {font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
-    color: #000000;
+    background-color: black;
+    color: #ffffff;
     margin: 0;
     padding: 0;
     display: flex;
@@ -8,7 +9,7 @@ body {font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 110vh;
 }
 header {
-Color: Blue;
+Color: rgb(253, 253, 253);
 text-align: center;
 padding: 0.1%;
 text-shadow: #b8ffb8;
