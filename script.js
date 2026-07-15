@@ -3,17 +3,13 @@ const header = document.querySelector('header');
 
 window.addEventListener('scroll', () => {
     // Detecta cuántos píxeles ha bajado el usuario
-    let textodown = window.scrollY; 
+    let scrollActual = window.scrollY; 
     
-    // Calcula la opacidad en base al movimiento (entre más baja, menor es el número)
-    // 300 es el límite en píxeles donde se volverá completamente invisible, puedes ajustarlo
-    let opacidad = 1 - (textodown / 300); 
-    
-    // Si la opacidad es menor a 0, la dejamos en 0 para evitar errores
-    if (opacidad < 0) {
-        opacidad = 0;
+    // Si el usuario bajó más de 200px, le añadimos la clase para ocultarlo.
+    // Si vuelve arriba, se la quitamos para que vuelva a aparecer.
+    if (scrollActual > 200) {
+        header.classList.add('header-oculto');
+    } else {
+        header.classList.remove('header-oculto');
     }
-    
-    // Aplicamos la opacidad directamente al estilo del encabezado
-    header.style.opacity = opacidad;
 });

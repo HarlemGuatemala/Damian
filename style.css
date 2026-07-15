@@ -1,234 +1,359 @@
-/* Estilos generales */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #ffe4ce;
-    color: #000000;
+/* ==========================================
+   RESET GENERAL Y TIPOGRAFÍA
+   ========================================== */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ==========================================
+   FONDO CON OVERLAY OSCURO
+   ========================================== */
+body {
+    /* Fondo con la imagen corporativa y una capa translúcida oscura encima */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('Foto/Harlem.png') no-repeat center center fixed;
+    background-size: cover;
+    color: #ffffff;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    max-width: 100%;
-    overflow-x: hidden; /* Evita el desplazamiento horizontal */
+    overflow-x: hidden;
 }
 
-
-/* Encabezado */
+/* ==========================================
+   ENCABEZADO ESTILIZADO
+   ========================================== */
 header {
-    background-color: #882406;
-    background: linear-gradient(to bottom, #fa7c05, #f3a257, #ffe4ce, #ffe4ce);
-    color: rgb(255, 255, 255);
+    background: linear-gradient(135deg, rgba(250, 124, 5, 0.9), rgba(243, 162, 87, 0.8));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 2px solid #f3be12;
+    padding: 3rem 1.5rem;
     text-align: center;
-    padding: 3rem 1rem 6rem 2rem;
-    position: relative;
-    clip-path: ellipse(80% 50% at 50% 30%);
-    transition: opacity 0.01s linear;
-    position: sticky; top: 0; z-index: 1000;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 
-/* Contenido principal */
-main {
-    text-align: justify;
+.header-contenido h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.3;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.badge-prueba {
+    font-size: 1rem;
+    background-color: #f3be12;
+    color: #0c0c0c;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 8px;
+    box-shadow: 0 2px 10px rgba(243, 190, 18, 0.4);
+}
+
+.logo-harlem {
+    max-width: 150px;
+    height: auto;
+    display: block;
+    margin: 1.5rem auto 0 auto;
+    filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.5));
+}
+
+/* ==========================================
+   CONTENEDOR PRINCIPAL
+   ========================================== */
+main.contenedor-principal {
     flex: 1;
-    padding: 2rem;
-    max-width: 800px;
+    padding: 40px 20px;
+    max-width: 900px;
+    width: 100%;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
-/* Pie de página */
-footer {
-    background-color: #f5ab22;
-    color: rgb(255, 255, 255);
-    text-align: center;
-    padding: 1rem;
+/* ==========================================
+   EFECTO CRISTAL (GLASSMORPHISM)
+   ========================================== */
+.glass-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 35px 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
-img {
-    max-width: 40%; /* Evita que la imagen se salga de la pantalla */
-    height: auto;    /* Mantiene las proporciones originales para que no se estire */
-    display: block;  /* Ayuda a alinearla mejor */
-    margin: 1rem auto; /* La centra horizontalmente */
-    border-radius: 8px; /* Le da un toque moderno con bordes redondeados */
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(243, 190, 18, 0.4);
+    box-shadow: 0 12px 35px rgba(243, 190, 18, 0.2);
 }
-/* El contenedor padre que activa las dos columnas */
+
+/* Textos dentro de las tarjetas de información */
+.seccion-informacion h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #f3be12; /* Amarillo corporativo */
+    margin-bottom: 15px;
+    border-bottom: 2px solid rgba(243, 190, 18, 0.3);
+    padding-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.seccion-informacion p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #f1f5f9;
+    text-align: justify;
+}
+
+/* ==========================================
+   ACCESOS EN COLUMNAS (SERVICIOS)
+   ========================================== */
 .columnas-contenedor {
     display: flex;
-    gap: 5rem; /* Este es el espacio de separación entre ambos párrafos */
-    margin-top: 3rem; /* Separa este bloque de la sección META de arriba */
-}
-/* Estilo individual para cada columna */
-.columna {  
-    flex: 1; /* Hace que ambas columnas midan exactamente lo mismo (50% y 50%) */
-    text-align: justify; /* Hace que el texto se vea alineado y profesional */
+    gap: 30px;
+    margin-top: 20px;
 }
 
-/* TRUCO RESPONSIVO: Si la pantalla es pequeña (como un celular), 
-   las columnas se acomodarán una debajo de la otra automáticamente */
-@media (max-width: 600px) {
-    .columnas-contenedor {
-        flex-direction: column;
-        gap: 1rem;
-    }
+.columna {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
 }
-/* Estilos para transformar el enlace en un botón */
+
+.columna h3 {
+    font-size: 1.3rem;
+    color: #f3be12;
+    margin-bottom: 15px;
+}
+
+.columna p {
+    font-size: 0.95rem;
+    color: #e2e8f0;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* ==========================================
+   BOTONES MODERNOS
+   ========================================== */
 .boton-enlace {
-    background-color: #e67e22; /* El mismo color naranja de tu encabezado */
-    color: white;             /* Texto en color blanco */
-    border: none;             /* Quitamos el borde por defecto */
-    padding: 10px 20px;       /* Espacio interno del botón (arriba/abajo e izquierda/derecha) */
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 5px;       /* Bordes ligeramente redondeados */
-    cursor: pointer;          /* Hace que el cursor cambie a una "manita" al pasar por encima */
-    margin-top: 1.5rem;       /* Separa el botón del párrafo de arriba */
-    transition: background-color 0.3s ease; /* Transición suave para el color */
+    display: inline-block;
+    background-color: #fa7c05; /* Naranja corporativo */
+    color: #ffffff;
     text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 25px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(250, 124, 5, 0.3);
+    border: none;
+    cursor: pointer;
 }
-/* Efecto visual cuando el usuario pasa el mouse por encima */
+
 .boton-enlace:hover {
-    background-color: #a83e00; /* Un azul un poco más oscuro */
-
-}
-.boton-de-enlace {
-    background-color: #e67e22; /* El mismo color naranja de tu encabezado */
-    color: white;             /* Texto en color blanco */
-    border: none;             /* Quitamos el borde por defecto */
-    padding: 10px 20px;       /* Espacio interno del botón (arriba/abajo e izquierda/derecha) */
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 5px;       /* Bordes ligeramente redondeados */
-    cursor: pointer;          /* Hace que el cursor cambie a una "manita" al pasar por encima */
-    margin-top: 1.5rem;       /* Separa el botón del párrafo de arriba */
-    transition: background-color 0.3s ease; /* Transición suave para el color */
-    text-decoration: none;
-}
-.boton-de-enlace:hover {
-    background-color: #a83e00;
+    background-color: #ffffff;
+    color: #fa7c05;
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
 }
 
-/* Estilos específicos para la tarjeta de aviso */
+/* Variante amarilla para el segundo botón */
+.boton-enlace.btn-amarillo {
+    background-color: #fa7c05;
+    color: white;
+    box-shadow: 0 4px 15px rgba(243, 190, 18, 0.3);
+}
+
+.boton-enlace.btn-amarillo:hover {
+    background-color: #ffffff;
+    color: #f3be12;
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+}
+
+/* ==========================================
+   PIE DE PÁGINA (FOOTER)
+   ========================================== */
+footer {
+    background-color: rgba(12, 12, 12, 0.95);
+    border-top: 2px solid #f3be12;
+    padding: 25px 20px;
+    text-align: center;
+    color: #ffffff;
+    margin-top: auto;
+}
+
+footer p {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    line-height: 1.5;
+}
+
+.creador {
+    font-size: 0.8rem;
+    color: #f3be12;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+/* ==========================================
+   MODAL DE AVISO (CONSTRUCCIÓN)
+   ========================================== */
 .modal-fondo-aviso {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Fondo negro con opacidad */
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 2000;         /* Asegura que quede por encima de todo */
-    opacity: 0;            /* Invisible por defecto */
-    pointer-events: none;  /* No permite clicks mientras esté invisible */
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
     transition: opacity 0.3s ease;
 }
 
-/* Clase que activa JavaScript para mostrar el cuadro */
 .modal-fondo-aviso.mostrar-aviso {
     opacity: 1;
     pointer-events: auto;
 }
 
-/* La tarjeta blanca del centro */
 .modal-tarjeta-aviso {
-    background-color: white;
-    padding: 35px 25px;
-    border-radius: 12px;
+    background-color: #1e293b;
+    border: 2px solid #f3be12;
+    padding: 40px 30px;
+    border-radius: 20px;
     width: 90%;
-    max-width: 360px;
+    max-width: 400px;
     position: relative;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    font-family: Arial, sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
     text-align: center;
+    color: #ffffff;
 }
 
-/* Botón 'X' para cerrar arriba a la derecha */
 .modal-cerrar-aviso {
     position: absolute;
     top: 15px;
     right: 15px;
     background: none;
     border: none;
-    font-size: 24px;
+    font-size: 28px;
     cursor: pointer;
-    color: #666;
+    color: #94a3b8;
+    transition: color 0.2s ease;
 }
 
-/* Icono animado */
+.modal-cerrar-aviso:hover {
+    color: #f3be12;
+}
+
 .icono-construccion {
-    font-size: 45px;
-    margin-bottom: 15px;
+    font-size: 50px;
+    margin-bottom: 20px;
     animation: flotarAviso 2s ease-in-out infinite;
 }
 
 .modal-tarjeta-aviso h3 {
-    color: #1e293b;
     font-size: 22px;
-    margin-bottom: 10px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #f3be12;
 }
 
 .modal-tarjeta-aviso p {
-    color: #64748b;
+    color: #cbd5e1;
     font-size: 15px;
-    line-height: 1.5;
-    margin-bottom: 5px;
+    line-height: 1.6;
+    margin-bottom: 10px;
 }
 
 .subtexto-aviso {
-    color: #2563eb;
+    color: #fa7c05 !important;
     font-weight: bold;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
 
-/* Botón azul "Entendido" */
 .boton-enviar-aviso {
     width: 100%;
-    padding: 12px;
-    background-color: #2563eb;
+    padding: 14px;
+    background-color: #fa7c05;
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 50px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-}
-.boton-enviar-aviso:hover {
-    background-color: #1d4ed8;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(250, 124, 5, 0.4);
 }
 
-/* Animación del emoji */
+.boton-enviar-aviso:hover {
+    background-color: #ffffff;
+    color: #fa7c05;
+}
+
 @keyframes flotarAviso {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-8px); }
     100% { transform: translateY(0px); }
 }
-/* Ajustes específicos para que el aviso se vea perfecto en celulares */
-@media (max-width: 480px) {
-    .modal-tarjeta-aviso {
-        width: 85%;            /* Reduce el ancho de la tarjeta para que no sature la pantalla */
-        padding: 25px 15px;    /* Reduce el espacio interno para ganar espacio útil */
-        border-radius: 10px;
+
+/* ==========================================
+   DISEÑO RESPONSIVO (MÓVILES)
+   ========================================== */
+@media (max-width: 768px) {
+    header {
+        padding: 2rem 1rem;
+    }
+    
+    .header-contenido h1 {
+        font-size: 1.5rem;
     }
 
-    .icono-construccion {
-        font-size: 35px;       /* Hace el emoji un poco más pequeño */
-        margin-bottom: 10px;
+    .columnas-contenedor {
+        flex-direction: column;
+        gap: 20px;
     }
 
-    .modal-tarjeta-aviso h3 {
-        font-size: 18px;       /* Reduce el tamaño del título principal */
+    .glass-card {
+        padding: 25px 20px;
     }
+}
+/* ==========================================
+   EFECTO DE DESVANECIMIENTO PARA EL HEADER
+   ========================================== */
+header {
+    /* ... Tus estilos anteriores se quedan igual ... */
+    
+    /* Aseguramos que la transición de opacidad sea suave (0.4 segundos) */
+    transition: opacity 0.4s ease, transform 0.4s ease; 
+}
 
-    .modal-tarjeta-aviso p {
-        font-size: 13px;       /* Hace el texto explicativo más compacto y legible */
-        line-height: 1.4;
-    }
-
-    .subtexto-aviso {
-        margin-bottom: 15px;   /* Reduce el espacio antes del botón */
-    }
-
-    .boton-enviar-aviso {
-        padding: 10px;         /* Hace el botón un poco más estilizado para pantallas táctiles */
-        font-size: 14px;
-    }
+/* Esta clase se activará automáticamente mediante JavaScript */
+.header-oculto {
+    opacity: 0;
+    pointer-events: none; /* Evita que el menú invisible bloquee clics en el resto de la página */
+    transform: translateY(-10px); /* Un ligero efecto de desplazamiento hacia arriba al desaparecer */
 }
