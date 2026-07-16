@@ -473,3 +473,28 @@ header {
         grid-template-columns: 1fr;
     }
 }
+/* Corrección de alineación para la página de Trámites */
+.contenedor-principal {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.columnas-contenedor-tramites {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start; /* Evita que se estiren de forma extraña */
+    margin-top: 40px;
+}
+
+.formulario-tramite {
+    flex: 1;
+    min-width: 320px; /* Evita que se colapsen en pantallas pequeñas */
+    max-width: 380px; /* Mantiene un ancho elegante */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
